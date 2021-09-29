@@ -1,0 +1,9 @@
+.nav {
+    grid-area: n;
+    background-color: #962323;
+
+}
+
+.item {
+    color: seashell;
+}
