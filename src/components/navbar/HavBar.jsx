@@ -1,5 +1,5 @@
 import React from 'react'
-import './App.css'
+import '../../App.css'
 import './NavBar.module.css'
 import classes from './NavBar.module.css'
 
