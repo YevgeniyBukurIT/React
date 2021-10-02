@@ -8,32 +8,49 @@ const DialogItem = (props) => {
 
     return (
         <div className={s.dialog}>
-            <NavLink to={'/dialogs/' + props.id} activeClassName={s.active}>{props.name}</NavLink>
+            <NavLink to={path} activeClassName={s.active}>{props.name}</NavLink>
         </div>
     )
 }
 
-const MessageItem = (props) =>{
-    return(
+const MessageItem = (props) => {
+    return (
         <div className={s.message}>{props.message}</div>
     )
 }
 
 
 const Dialogs = () => {
+
+    let dialogsData = [
+        {id: 1, name: 'Yevgeniy'},
+        {id: 2, name: 'Diana'},
+        {id: 3, name: 'Nazar'},
+        {id: 4, name: 'Sergey'},
+        {id: 5, name: 'Vickotoria'}
+    ]
+
+    let messageData = [
+        {id: 1, message: 'Hey, how are you?'},
+        {id: 2, message: 'Ok'},
+        {id: 3, message: 'Good'}
+
+    ]
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogItems}>
-                <DialogItem name={'Yevgeniy'} id={'1'}/>
-                <DialogItem name={'Diana'} id={'2'}/>
-                <DialogItem name={'Nazar'} id={'3'}/>
-                <DialogItem name={'Sergey'} id={'4'}/>
-                <DialogItem name={'Mother'} id={'5'}/>
+                <DialogItem name={dialogsData[0].name} id={dialogsData[0].id}/>
+                <DialogItem name={dialogsData[1].name} id={dialogsData[1].id}/>
+                <DialogItem name={dialogsData[2].name} id={dialogsData[2].id}/>
+                <DialogItem name={dialogsData[3].name} id={dialogsData[3].id}/>
+                <DialogItem name={dialogsData[4].name} id={dialogsData[4].id}/>
+
             </div>
             <div className={s.message}>
-                <MessageItem message={"Hey, how are you?"} />
-                <MessageItem message={"Ok"} />
-                <MessageItem message={"Good"} />
+                <MessageItem message={messageData[0].message} />
+                <MessageItem message={messageData[1].message}/>
+                <MessageItem message={messageData[2].message}/>
 
             </div>
         </div>
