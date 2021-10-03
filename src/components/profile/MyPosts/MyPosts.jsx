@@ -10,6 +10,8 @@ const MyPosts = () => {
         {message: 'second dialog', likesCount: 10}
     ]
 
+    let dialogsArray = dialogsData.map( d => <Post message={d.message} like={d.likesCount} /> )
+
     return <div className={s.postBlock}>
         My posts
         <div>
@@ -21,9 +23,7 @@ const MyPosts = () => {
             </div>
         </div>
         <div className={s.post}>
-            <Post message={dialogsData[0].message} like={dialogsData[0].likesCount}/>
-
-            <Post message={dialogsData[1].message} like={dialogsData[1].likesCount}/>
+            {dialogsArray}
 
         </div>
     </div>
