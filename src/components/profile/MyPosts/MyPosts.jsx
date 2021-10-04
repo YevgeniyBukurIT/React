@@ -3,14 +3,11 @@ import s from './MyPosts.module.css'
 import Post from './Post/Post'
 
 
-const MyPosts = () => {
+const MyPosts = (props) => {
 
-    let dialogsData = [
-        {message: 'firs dialog', likesCount: 12},
-        {message: 'second dialog', likesCount: 10}
-    ]
 
-    let dialogsArray = dialogsData.map( d => <Post message={d.message} like={d.likesCount} /> )
+
+    let dialogsArray = props.dialogsData.map( d => <Post message={d.message} like={d.likesCount} /> )
 
     return <div className={s.postBlock}>
         My posts
