@@ -3,16 +3,17 @@ import s from './MyPosts.module.css'
 import Post from './Post/Post'
 
 
-const MyPosts = (props) => {
+const MyPosts = (propsMyPosts) => {
 
 
-    let dialogsArray = props.dialogsData.map(d => <Post message={d.message} like={d.likesCount}/>)
+    let dialogsArray = propsMyPosts.dialogsData.map(d => <Post message={d.message} like={d.likesCount}/>)
 
     let newPostElements = React.createRef();
 
     let addPost = () =>{
+        debugger;
         let text = newPostElements.current.value;
-        alert(text)
+        propsMyPosts.addPost(text)
     }
 
     return <div className={s.postBlock}>
