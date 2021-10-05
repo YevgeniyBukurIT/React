@@ -6,17 +6,23 @@ import Post from './Post/Post'
 const MyPosts = (props) => {
 
 
+    let dialogsArray = props.dialogsData.map(d => <Post message={d.message} like={d.likesCount}/>)
 
-    let dialogsArray = props.dialogsData.map( d => <Post message={d.message} like={d.likesCount} /> )
+    let newPostElements = React.createRef();
+
+    let addPost = () =>{
+        let text = newPostElements.current.value;
+        alert(text)
+    }
 
     return <div className={s.postBlock}>
         My posts
         <div>
             <div>
-                <textarea> </textarea>
+                <textarea ref={newPostElements}> </textarea>
             </div>
             <div>
-                <button>Add post</button>
+                <button onClick={addPost}>Add post</button>
             </div>
         </div>
         <div className={s.post}>
