@@ -7,11 +7,9 @@ import ProfileInfo from './profileInfo/ProfileInfo'
 
 const Profile = (props) => {
 
-
-
     return <div>
         <ProfileInfo />
-        <MyPosts dialogsData={props.dialogsData} />
+        <MyPosts dialogsData={props.state.dialogsData} />
     </div>
 }
 
