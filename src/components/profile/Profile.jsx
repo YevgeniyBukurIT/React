@@ -10,8 +10,10 @@ const Profile = (propsProfile) => {
 
     return <div>
         <ProfileInfo />
-        <MyPosts dialogsData={propsProfile.state.dialogsData}
+        <MyPosts dialogsData={propsProfile.profilePage.dialogsData}
+                 newPostText={propsProfile.profilePage.newPostText}
                  addPost={propsProfile.addPost}
+                 updateNewPostChange={propsProfile.updateNewPostChange}
         />
     </div>
 }
