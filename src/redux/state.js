@@ -1,3 +1,10 @@
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_CHANGE = 'UPDATE-NEW-POST-CHANGE'
+
+const ADD_MESSAGE = 'ADD-MESSAGE'
+const UPDATE_NEW_MESSAGES_CHANGE = 'UPDATE-NEW-MESSAGES-CHANGE'
+
+
 let store = {
     _state: {
 
@@ -24,10 +31,13 @@ let store = {
                 {id: 2, message: 'Ok'},
                 {id: 3, message: 'Good'}
 
-            ]
+            ],
+
+            newMessageText: 'MESSAGE'
+
         }
     },
-    _callSubscriber(){},
+    _callSubscriber(){}, //pattern
 
     getState(){
         return this._state;
@@ -38,7 +48,7 @@ let store = {
     },
 
     dispatch(action){
-        if(action.type === 'ADD-POST'){
+        if(action.type === ADD_POST){
             let newPost = {
                 message: this._state.profilePage.newPostText,
                 likesCount: 333
@@ -48,21 +58,45 @@ let store = {
             this._state.profilePage.newPostText = ''
             this._callSubscriber(this._state)
 
-        } else if (action.type === 'UPDATE-NEW-POST-CHANGE'){
+        } else if (action.type === UPDATE_NEW_POST_CHANGE){
             this._state.profilePage.newPostText = action.newText
+            this._callSubscriber(this._state)
+        }
+
+        else if(action.type === ADD_MESSAGE){
+            let newMessage =  this._state.dialogsPage.newMessageText
+
+
+
+            this._state.dialogsPage.messages.push({id: 4, message: newMessage})
+            this._state.dialogsPage.newMessageText = ''
+            this._callSubscriber(this._state)
+        }
+        else if (action.type === UPDATE_NEW_MESSAGES_CHANGE){
+            this._state.dialogsPage.newMessageText = action.body
             this._callSubscriber(this._state)
         }
     }
 
 
 }
+export let addMessagesActionCreator = () =>{
+    return {type: ADD_MESSAGE}
+
+}
+
+export let updateNewMessagesChangeActionCreator = (body) =>{
+    return {type: UPDATE_NEW_MESSAGES_CHANGE, body: body}
+
+}
+
 export let addPostActionCreator = () =>{
-    return {type: 'ADD-POST'}
+    return {type: ADD_POST}
 
 }
 
 export let updateNewPostChangeActionCreator = (text) =>{
-    return {type: 'UPDATE-NEW-POST-CHANGE', newText: text}
+    return {type: UPDATE_NEW_POST_CHANGE, newText: text}
 
 }
 export default store;
