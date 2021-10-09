@@ -27,43 +27,33 @@ let store = {
             ]
         }
     },
+    _callSubscriber(){},
+
     getState(){
         return this._state;
     },
-    _callSubscriber(){},
-    addPost(postMessage){
-        let newPost = {
-            message: this._state.profilePage.newPostText,
-            likesCount: 333
-        }
-
-        this._state.profilePage.dialogsData.push(newPost)
-        this._state.profilePage.newPostText = ''
-        this._callSubscriber(this._state)
-    },
-    updateNewPostChange(newText){
-
-        this._state.profilePage.newPostText = newText
-        this._callSubscriber(this._state)
-
-
-
-},
     subscribe(observer)  {
         this._callSubscriber = observer // наблюдатель - патерн, publisher-subscribe
 
+    },
 
+    dispatch(action){
+        if(action.type === 'ADD-POST'){
+            let newPost = {
+                message: this._state.profilePage.newPostText,
+                likesCount: 333
+            }
 
+            this._state.profilePage.dialogsData.push(newPost)
+            this._state.profilePage.newPostText = ''
+            this._callSubscriber(this._state)
 
+        } else if (action.type === 'UPDATE-NEW-POST-CHANGE'){
+            this._state.profilePage.newPostText = action.newText
+            this._callSubscriber(this._state)
+        }
+    }
 
-
-
-
-
-
-
-
-}
 
 }
 
