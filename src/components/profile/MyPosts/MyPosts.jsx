@@ -1,10 +1,10 @@
 import React from 'react'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
+import { addPostActionCreator, updateNewPostChangeActionCreator } from '../../../redux/state'
 
 
 const MyPosts = (propsMyPosts) => {
-
 
     let dialogsArray = propsMyPosts.dialogsData.map(d => <Post message={d.message} like={d.likesCount}/>)
 
@@ -12,13 +12,13 @@ const MyPosts = (propsMyPosts) => {
 
     let addPost = () =>{
 
-        propsMyPosts.dispatch({type: 'ADD-POST'});
+        propsMyPosts.dispatch(addPostActionCreator());
 
     }
 
     let onPostChange = () =>{
         let text = newPostElements.current.value;
-        propsMyPosts.dispatch({type: 'UPDATE-NEW-POST-CHANGE', newText: text});
+        propsMyPosts.dispatch(updateNewPostChangeActionCreator(text));
 
     }
 
