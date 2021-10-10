@@ -3,8 +3,8 @@ import React from 'react'
 import Header from './components/Header/Header'
 import NavBar from './components/navbar/HavBar'
 import Profile from './components/profile/Profile'
-import Dialogs from './components/dialogs/Dialogs'
 import { Route } from 'react-router-dom'
+import DialogsContainer from './components/dialogs/DialogsContainer'
 
 
 const App = (props) => {
@@ -16,13 +16,11 @@ const App = (props) => {
             <div className={'app-wrapper-content'}>
 
                 <Route path={'/profile'}
-                       render={() => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch}
-
-                       />}
+                       render={() => <Profile store={props.store} />}
                 />
 
                 <Route path={'/dialogs'}
-                       render={() => <Dialogs  store={props.store}/>}
+                       render={() => <DialogsContainer  store={props.store}/>}
                 />
             </div>
         </div>
