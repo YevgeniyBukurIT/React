@@ -3,7 +3,7 @@ import '../../App.css'
 import s from './Profile.module.css'
 import MyPosts from './MyPosts/MyPosts'
 import ProfileInfo from './profileInfo/ProfileInfo'
-import { addPost } from '../../redux/state'
+import { addPost } from '../../redux/store'
 
 
 const Profile = (propsProfile) => {

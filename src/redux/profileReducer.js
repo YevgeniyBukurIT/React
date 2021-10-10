@@ -1,8 +1,17 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_CHANGE = 'UPDATE-NEW-POST-CHANGE'
 
+let initialState = {
+        dialogsData: [
+            {message: 'firs dialog', likesCount: 12},
+            {message: 'second dialog', likesCount: 10},
+            {message: '3 dialog', likesCount: 12}
+        ],
+        newPostText: ''
 
-const profileReducer = (state, action) => {
+}
+
+const profileReducer = (state = initialState, action) => {
     switch (action.type){
         case ADD_POST:
             let newPost = {
