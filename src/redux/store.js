@@ -2,8 +2,6 @@ import profileReducer from './profileReducer'
 import dialogsReducer from './dialogsReducer'
 
 
-
-
 let store = {
     _state: {
 
