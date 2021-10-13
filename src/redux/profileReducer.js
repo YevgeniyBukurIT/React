@@ -2,41 +2,33 @@ const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_CHANGE = 'UPDATE-NEW-POST-CHANGE'
 
 let initialState = {
-        dialogsData: [
-            {message: 'firs dialog', likesCount: 12},
-            {message: 'second dialog', likesCount: 10},
-            {message: '3 dialog', likesCount: 12}
-        ],
-        newPostText: ''
+    dialogsData: [
+        {message: 'firs dialog', likesCount: 12},
+        {message: 'second dialog', likesCount: 10},
+        {message: '3 dialog', likesCount: 12}
+    ],
+    newPostText: ''
 
 }
 
 const profileReducer = (state = initialState, action) => {
-    switch (action.type){
+    switch (action.type) {
         case ADD_POST: {
-            let newPost = {
-            message: state.newPostText,
-            likesCount: 333
-        }
-        let stateCopy = {...state}
-
-            stateCopy.dialogsData = [...state.dialogsData]
-            stateCopy.dialogsData.push(newPost)
-            stateCopy.newPostText = ''
-            return stateCopy;
+            return {
+                ...state,
+                dialogsData: [...state.dialogsData, {message: state.newPostText, likesCount: 333}],
+                newPostText: ''
+            }
         }
         case UPDATE_NEW_POST_CHANGE: {
-            let stateCopy ={...state}
-            stateCopy.dialogsData = [...state.dialogsData]
-
-            stateCopy.newPostText = action.newText
-            return stateCopy;
+            return {
+                ...state,
+                newPostText: action.newText
+            }
         }
         default:
-            return state;
+            return state
     }
-
-
 }
 
 export let addPostActionCreator = () => {
