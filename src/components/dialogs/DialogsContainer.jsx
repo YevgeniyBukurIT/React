@@ -3,8 +3,6 @@ import { addMessagesActionCreator, updateNewMessagesChangeActionCreator } from '
 import Dialogs from './Dialogs'
 import { connect } from 'react-redux'
 
-
-
 // const DialogsContainer = (props) => {
 //
 //     return <storeContext.Consumer>

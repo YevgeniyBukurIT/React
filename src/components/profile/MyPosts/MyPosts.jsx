@@ -3,19 +3,19 @@ import s from './MyPosts.module.css'
 import Post from './Post/Post'
 
 
-const MyPosts = (propsMyPosts) => {
+const MyPosts = (props) => {
 
-    let dialogsArray = propsMyPosts.dialogsData.map(d => <Post message={d.message} like={d.likesCount}/>)
+    let dialogsArray = props.dialogsData.map(d => <Post message={d.message} like={d.likesCount}/>)
 
     let newPostElements = React.createRef();
 
     let onAddPost = () =>{
-        propsMyPosts.addPost()
+        props.addPost()
     }
 
     let onPostChange = () =>{
         let text = newPostElements.current.value;
-        propsMyPosts.updateNewPostText(text)
+        props.updateNewPostText(text)
 
 
     }
@@ -24,7 +24,7 @@ const MyPosts = (propsMyPosts) => {
         My posts
         <div>
             <div>
-                <textarea onChange={onPostChange} ref={newPostElements} value={propsMyPosts.newPostText} />
+                <textarea onChange={onPostChange} ref={newPostElements} value={props.newPostText} />
             </div>
             <div>
                 <button onClick={onAddPost}>Add post</button>
