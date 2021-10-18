@@ -4,9 +4,6 @@ import DialogItem from './dialogItem/DialogItem'
 import MessageItem from './messageItem/MessageItem'
 
 
-
-
-
 const Dialogs = (props) => {
 
     let state = props.dialogsPage
