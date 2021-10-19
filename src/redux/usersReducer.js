@@ -7,7 +7,7 @@ const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USES_COUNT'
 
 let Initialization = {
     users: [],
-    pageSize: 5,
+    pageSize: 20,
     totalUsersCount: 0,
     currentPage: 1
 }
