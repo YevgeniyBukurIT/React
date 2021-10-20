@@ -10,14 +10,13 @@ import {
 import {connect} from 'react-redux'
 import axios from "axios";
 import Users from "./Users";
-import spinner from './../../assets/images/Spinner.gif'
-import s from "./User.module.css"
 import Preloader from "../common/Preloader/Preloader";
 
 class UsersComponent extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=
+        ${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
                 this.props.toggleIsFetching(false)
                 this.props.setUsers(response.data.items)
                 this.props.setTotalUsersCount(response.data.totalCount)
