@@ -6,19 +6,20 @@ import Profile from './components/profile/Profile'
 import { Route } from 'react-router-dom'
 import DialogsContainer from './components/dialogs/DialogsContainer'
 import UsersContainer from './components/Users/UsersContainer'
-import ProfileContainer from "./components/profile/ProfileContainer";
+import ProfileContainer from './components/profile/ProfileContainer'
+import HeaderContainer from './components/Header/HeaderContainer'
 
 
 const App = (props) => {
 
     return (
         <div className="app-wrapper">
-            <Header/>
+            <HeaderContainer/>
             <NavBar/>
             <div className={'app-wrapper-content'}>
-                <Route path={'/profile/:userId?'} render={() => <ProfileContainer  />} />
-                <Route path={'/dialogs'} render={() => <DialogsContainer  />} />
-                <Route path={'/users'} render={() => <UsersContainer  />} />
+                <Route path={'/profile/:userId?'} render={() => <ProfileContainer/>}/>
+                <Route path={'/dialogs'} render={() => <DialogsContainer/>}/>
+                <Route path={'/users'} render={() => <UsersContainer/>}/>
             </div>
         </div>
 

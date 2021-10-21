@@ -3,33 +3,6 @@ import { addMessagesActionCreator, updateNewMessagesChangeActionCreator } from '
 import Dialogs from './Dialogs'
 import { connect } from 'react-redux'
 
-// const DialogsContainer = (props) => {
-//
-//     return <storeContext.Consumer>
-//         {(store) => {
-//             let state = store.getState().dialogsPage
-//
-//
-//             let omSendMessageClick = () => {
-//                 store.dispatch(addMessagesActionCreator())
-//
-//             }
-//
-//             let onNewMessagesChange = (body) => {
-//                 store.dispatch(updateNewMessagesChangeActionCreator(body))
-//
-//             }
-//
-//             return <Dialogs
-//                 sendMessage={omSendMessageClick}
-//                 updateNewMessagesBody={onNewMessagesChange}
-//                 dialogsPage={state}/>
-//         }
-//         }
-//     </storeContext.Consumer>
-//
-//
-// }
 
 let mapStateToProps = (state) => {
     return{
