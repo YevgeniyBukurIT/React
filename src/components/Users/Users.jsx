@@ -2,8 +2,8 @@ import React from 'react'
 import s from './User.module.css'
 import userPhoto from '../../assets/images/user.jpg'
 import { NavLink } from 'react-router-dom'
-import NavBar from '../navbar/HavBar'
-import axios from 'axios'
+import { getFollowAPI, getUnFollowAPI } from '../../api/api'
+
 
 const Users = (props) => {
 
@@ -33,32 +33,34 @@ const Users = (props) => {
                     </NavLink>
                 <div>
                     {u.followed
-                        ? <button onClick={() => {
 
-                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                                withCredentials: true,
-                                headers: {'API-KEY': '5492f4f3-88d9-4f6c-acc2-35f0df8246c6'}
-                            })
+                        ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+
+                            props.toggleFollowingProgress(true, u.id)
+                            getUnFollowAPI(u.id)
                                 .then(response => {
                                         if (response.data.resultCode === 1) {
                                             props.follow(u.id)
                                         }
+                                        props.toggleFollowingProgress(false, u.id)
+
                                     }
                                 )
 
                             props.unFollow(u.id)
-                        }}>Unfollow</button>
-                        : <button onClick={() => {
 
-                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {},
-                                {
-                                    withCredentials: true,
-                                    headers: {'API-KEY': '5492f4f3-88d9-4f6c-acc2-35f0df8246c6'}
-                                })
+                        }}>Unfollow</button>
+                        : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+
+                            props.toggleFollowingProgress(true, u.id)
+
+                            getFollowAPI(u.id)
                                 .then(response => {
                                         if (response.data.resultCode === 1) {
                                             props.follow(u.id)
                                         }
+                                        props.toggleFollowingProgress(false, u.id)
+
                                     }
                                 )
 
