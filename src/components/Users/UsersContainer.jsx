@@ -5,7 +5,7 @@ import {
     toggleIsFetching,
     setTotalUsersCount,
     setUsers,
-    unFollow
+    unFollow, toggleFollowingProgress
 } from '../../redux/usersReducer'
 import {connect} from 'react-redux'
 import axios from "axios";
@@ -47,6 +47,8 @@ class UsersComponent extends React.Component {
                    onPageChange={this.onPageChange}
                    follow={this.props.follow}
                    unFollow={this.props.unFollow}
+                   toggleFollowingProgress={this.props.toggleFollowingProgress}
+                   followingInProgress={this.props.followingInProgress}
 
 
             />
@@ -61,7 +63,8 @@ const mapStateToProps = (state) => {
         pageSize: state.userPage.pageSize,
         totalUsersCount: state.userPage.totalUsersCount,
         currentPage: state.userPage.currentPage,
-        isFetching: state.userPage.isFetching
+        isFetching: state.userPage.isFetching,
+        followingInProgress: state.userPage.followingInProgress
     }
 }
 
@@ -72,7 +75,8 @@ let mapDispatchToProps = {
     setUsers,
     setCurrentPage,
     setTotalUsersCount,
-    toggleIsFetching
+    toggleIsFetching,
+    toggleFollowingProgress
 }
 
 
