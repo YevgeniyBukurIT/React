@@ -7,6 +7,7 @@ const ProfileInfo = (props) => {
         return <Preloader/>
     }
 
+
     return (
         <div>
             <div>
