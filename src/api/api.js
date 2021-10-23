@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+
 let instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
@@ -12,19 +13,23 @@ export const getUsersAPI = (currentPage, pageSize) => {
     })
 }
 
-export const getFollowAPI = (id) =>{
+export const getFollowAPI = (id) => {
     return instance.post(`follow/${id}`)
 
 
 }
 
-export const getUnFollowAPI = (id) =>{
+export const getUnFollowAPI = (id) => {
     return instance.delete(`follow/${id}`)
 
 }
 
-export const getHeaderAPI = () =>{
-    return instance.get(`auth/me`).then(repsonse => {
-        return repsonse.data
-    })
+export const getHeaderAPI = () => {
+    return instance.get(`auth/me`)
+
+}
+
+export const getProfileAPI = (userId) => {
+    return instance.get(`profile/${userId}`)
+
 }
