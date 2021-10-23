@@ -2,38 +2,20 @@ import React from 'react'
 import {
     follow,
     setCurrentPage,
-    toggleIsFetching,
-    setTotalUsersCount,
-    setUsers,
-    unFollow, toggleFollowingProgress
-} from '../../redux/usersReducer'
+    unFollow, toggleFollowingProgress, getUsers} from '../../redux/usersReducer'
 import {connect} from 'react-redux'
-import axios from "axios";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-import { getUsersAPI } from '../../api/api'
 
 class UsersComponent extends React.Component {
     componentDidMount() {
-        this.props.toggleIsFetching(true)
-        getUsersAPI(this.props.currentPage, this.props.pageSize).then(data => {
-
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(data.items)
-                this.props.setTotalUsersCount(data.totalCount)
-            }
-        )
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
+    //Метод для кліку сторінки
     onPageChange = (pageNumber) => {
-        this.props.toggleIsFetching(true)
-        this.props.setCurrentPage(pageNumber)
-        getUsersAPI(pageNumber, this.props.pageSize).then(data => {
-                
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(data.items)
-            }
-        )
+        this.props.getUsers(pageNumber, this.props.pageSize)
+
     }
 
     render() {
@@ -47,7 +29,7 @@ class UsersComponent extends React.Component {
                    onPageChange={this.onPageChange}
                    follow={this.props.follow}
                    unFollow={this.props.unFollow}
-                   toggleFollowingProgress={this.props.toggleFollowingProgress}
+
                    followingInProgress={this.props.followingInProgress}
 
 
@@ -70,13 +52,11 @@ const mapStateToProps = (state) => {
 
 
 let mapDispatchToProps = {
-    follow,
-    unFollow,
-    setUsers,
     setCurrentPage,
-    setTotalUsersCount,
-    toggleIsFetching,
-    toggleFollowingProgress
+    toggleFollowingProgress,
+    getUsers,
+    follow,
+    unFollow
 }
 
 

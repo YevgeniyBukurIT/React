@@ -19,7 +19,7 @@ export const getFollowAPI = (id) =>{
 }
 
 export const getUnFollowAPI = (id) =>{
-    return instance.delete(`/follow/${id}`)
+    return instance.delete(`follow/${id}`)
 
 }
 
