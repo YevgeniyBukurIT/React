@@ -12,7 +12,7 @@ let reducers = combineReducers({
     auth: authReducer
 })
 
-let store = createStore(reducers, applyMiddleware(thunkMiddleware))
+let store = createStore(reducers, applyMiddleware(thunkMiddleware)) //applyMiddleware(thunkMiddleware) - використовуємо для роботи санок
 
 
 export default store
