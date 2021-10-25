@@ -33,3 +33,11 @@ export const getProfileAPI = (userId) => {
     return instance.get(`profile/${userId}`)
 
 }
+
+export const getStatusAPI = (userId) =>{
+    return instance.get(`profile/status/${userId}`)
+}
+
+export const updateStatusAPI = (status) =>{
+    return instance.put(`profile/status`, {status: status})
+}
