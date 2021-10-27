@@ -1,7 +1,7 @@
 import './App.css'
 import React from 'react'
-import NavBar from './components/navbar/HavBar'
 import { Route } from 'react-router-dom'
+import NavBar from './components/navbar/HavBar'
 import DialogsContainer from './components/dialogs/DialogsContainer'
 import UsersContainer from './components/Users/UsersContainer'
 import ProfileContainer from './components/profile/ProfileContainer'

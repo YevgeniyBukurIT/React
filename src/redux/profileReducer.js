@@ -2,7 +2,6 @@ import { getProfileAPI, getStatusAPI, updateStatusAPI } from '../api/api'
 
 
 const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_CHANGE = 'UPDATE-NEW-POST-CHANGE'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_USERS_STATUS = 'SET_USERS_STATUS'
 
@@ -12,7 +11,7 @@ let initialState = {
         {message: 'second dialog', likesCount: 10},
         {message: '3 dialog', likesCount: 12}
     ],
-    newPostText: '',
+
     profile: null,
     status: ''
 
@@ -23,14 +22,8 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST: {
             return {
                 ...state,
-                dialogsData: [...state.dialogsData, {message: state.newPostText, likesCount: 333}],
-                newPostText: ''
-            }
-        }
-        case UPDATE_NEW_POST_CHANGE: {
-            return {
-                ...state,
-                newPostText: action.newText
+                dialogsData: [...state.dialogsData, {message: action.newPostText, likesCount: 333}]
+
             }
         }
 
@@ -46,8 +39,7 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 //Action creators
-export let addPostActionCreator = () => ({type: ADD_POST})
-export let updateNewPostChangeActionCreator = (text) => ({type: UPDATE_NEW_POST_CHANGE, newText: text})
+export let addPostActionCreator = (newPostText) => ({type: ADD_POST, newPostText})
 export let setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile})
 export let setStatus = (status) => ({type: SET_USERS_STATUS, status})
 
