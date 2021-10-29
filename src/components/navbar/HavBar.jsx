@@ -13,7 +13,7 @@ import { NavLink } from 'react-router-dom'
 const NavBar = () =>{
     return <nav className={s.nav}>
         <div className= {s.item}>
-            <NavLink to={'/profile'} activeClassName={s.active}> My Provile </NavLink>
+            <NavLink to={'/profile'} activeClassName={s.active}> My Profile </NavLink>
         </div>
         <div className={s.item}>
             <NavLink to={'/dialogs'} activeClassName={s.active}> Message </NavLink>

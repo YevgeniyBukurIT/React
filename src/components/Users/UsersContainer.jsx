@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 
-class UsersComponent extends React.Component {
+class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
@@ -60,4 +60,4 @@ let mapDispatchToProps = {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)

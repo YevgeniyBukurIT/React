@@ -94,8 +94,8 @@ export const getUsers = (currentPage, pageSize) => {
     }
 }
 
-export const follow = (id) =>{
-    return (dispatch) =>{
+export const follow = (id) => {
+    return (dispatch) => {
         dispatch(toggleFollowingProgress(true, id))
 
         getFollowAPI(id)
@@ -103,7 +103,7 @@ export const follow = (id) =>{
                     if (response.data.resultCode === 1) {
                         dispatch(followSuccess(id))
                     }
-                   dispatch(toggleFollowingProgress(false, id))
+                    dispatch(toggleFollowingProgress(false, id))
 
                 }
             )
@@ -111,8 +111,8 @@ export const follow = (id) =>{
     }
 }
 
-export const unFollow = (id) =>{
-    return (dispatch) =>{
+export const unFollow = (id) => {
+    return (dispatch) => {
         dispatch(toggleFollowingProgress(true, id))
 
         getUnFollowAPI(id)
@@ -120,7 +120,7 @@ export const unFollow = (id) =>{
                     if (response.data.resultCode === 1) {
                         dispatch(unFollowSuccess(id))
                     }
-                   dispatch(toggleFollowingProgress(false, id))
+                    dispatch(toggleFollowingProgress(false, id))
 
                 }
             )
