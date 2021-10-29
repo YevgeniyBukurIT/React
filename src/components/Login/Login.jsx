@@ -1,10 +1,11 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { maxLengthCreator, required } from '../../utils/validators/validator'
-import { Input, Textarea } from '../common/FormsControls/FromsControls'
+import { Input } from '../common/FormsControls/FromsControls'
 import {connect} from "react-redux";
 import {login} from "../../redux/authReducer";
 import {Redirect} from "react-router-dom";
+import s from './../common/FormsControls/FormsControls.module.css'
 
 let maxLength = maxLengthCreator(10)
 
@@ -21,11 +22,8 @@ const LoginForm = (props) => {
         </div>
         <div>
             <button>login</button>
-
         </div>
-        <div>
-
-        </div>
+        {props.error && <div className={s.formError}> {props.error} </div>}
     </form>
 }
 

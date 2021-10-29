@@ -8,3 +8,7 @@
 {
     color: red;
 }
+
+.formError {
+    border: red 2px solid;
+}
