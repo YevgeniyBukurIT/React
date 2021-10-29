@@ -11,7 +11,6 @@ const MyPosts = (props) => {
     let dialogsArray = props.dialogsData.map(d => <Post message={d.message} like={d.likesCount}/>)
 
 
-
     let onAddPost = (value) => {
         props.addPost(value.addPost)
     }
@@ -21,7 +20,7 @@ const MyPosts = (props) => {
         My posts
         <div>
 
-            <MyPostsFormRedux onSubmit={onAddPost} />
+            <MyPostsFormRedux onSubmit={onAddPost}/>
 
         </div>
         <div className={s.post}>
@@ -37,7 +36,8 @@ let maxLength = maxLengthCreator(30)
 const MyPostsForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
         <div>
-            <Field validate={[required, maxLength]} component={Textarea} name={'addPost'} placeholder={'Write your post'} />
+            <Field validate={[required, maxLength]} component={Textarea} name={'addPost'}
+                   placeholder={'Write your post'}/>
         </div>
         <div>
             <button>Add post</button>
