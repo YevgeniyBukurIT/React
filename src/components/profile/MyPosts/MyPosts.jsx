@@ -5,14 +5,11 @@ import { Field, reduxForm } from 'redux-form'
 import { maxLengthCreator, required } from '../../../utils/validators/validator'
 import { Textarea } from '../../common/FormsControls/FromsControls'
 
-class MyPosts extends React.Component {
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return nextProps != this.props || nextState != this.state
-    }
-
+//PureComponent
+class MyPosts extends React.PureComponent {
     render() {
-        console.log('My posts render')
+
+        console.log('RENDERRRR')
 
         let dialogsArray = this.props.dialogsData.map(d => <Post message={d.message} like={d.likesCount}/>)
 

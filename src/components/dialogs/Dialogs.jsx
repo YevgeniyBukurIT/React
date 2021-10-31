@@ -7,37 +7,31 @@ import { Textarea } from '../common/FormsControls/FromsControls'
 import { maxLengthCreator, required } from '../../utils/validators/validator'
 
 
-class Dialogs extends React.Component {
+const Dialogs = props => {
+
+    let state = props.dialogsPage
+
+    let dialogItems = state.dialogs.map(d => <DialogItem id={d.id} name={d.name}/>)
+    let messageItems = state.messages.map(m => <MessageItem id={m.id} message={m.message}/>)
 
 
+    let addNewMessage = (value) => {
+        props.sendMessage(value.newMessageText)
+    }
 
-    render() {
-
-        console.log('Render Dialogs')
-        let state = this.props.dialogsPage
-
-        let dialogItems = state.dialogs.map(d => <DialogItem id={d.id} name={d.name}/>)
-        let messageItems = state.messages.map(m => <MessageItem id={m.id} message={m.message}/>)
-
-
-        let addNewMessage = (value) => {
-            this.props.sendMessage(value.newMessageText)
-        }
-
-        return (
-            <div className={s.dialogs}>
-                <div className={s.dialogItems}>
-                    {dialogItems}
-                </div>
-                <div className={s.message}>
-                    {messageItems}
-                    <div>
-                        <AddMessageReduxForm onSubmit={addNewMessage}/>
-                    </div>
+    return (
+        <div className={s.dialogs}>
+            <div className={s.dialogItems}>
+                {dialogItems}
+            </div>
+            <div className={s.message}>
+                {messageItems}
+                <div>
+                    <AddMessageReduxForm onSubmit={addNewMessage}/>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 let maxLength = maxLengthCreator(30)
