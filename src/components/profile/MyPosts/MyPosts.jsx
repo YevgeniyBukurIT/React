@@ -8,15 +8,11 @@ import { Textarea } from '../../common/FormsControls/FromsControls'
 //React.memo
 const MyPosts = React.memo(props => {
 
-    console.log('RENDERRRR')
-
-    let dialogsArray = props.dialogsData.map(d => <Post message={d.message} like={d.likesCount}/>)
-
+    let dialogsArray = [...props.dialogsData].reverse().map(d => <Post message={d.message} like={d.likesCount}/>)
 
     let onAddPost = (value) => {
         props.addPost(value.addPost)
     }
-
 
     return <div className={s.postBlock}>
         My posts
