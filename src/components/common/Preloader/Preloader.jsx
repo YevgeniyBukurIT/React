@@ -5,6 +5,8 @@ import spinner from '../../../assets/images/Preloader.gif'
 const Preloader = (props) => {
     return <img className={s.imgPreloader} src={spinner}/>
 
+
+
 }
 
 export default Preloader
