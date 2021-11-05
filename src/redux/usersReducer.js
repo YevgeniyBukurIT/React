@@ -18,16 +18,7 @@ let Initialization = {
     followingInProgress: [2, 3]
 }
 
-// const followUnfollowSuccess = (state = Initialization, action, isFollowed) =>{
-//     return {
-//         ...state,
-//         users: state.users.map(u => {
-//             if (u.id === action.userId)
-//                 return {...u, followed: isFollowed}
-//             return u
-//         })
-//     }
-// }
+
 
 const userReducer = (state = Initialization, action) => {
     switch (action.type) {

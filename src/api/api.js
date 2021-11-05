@@ -7,6 +7,8 @@ let instance = axios.create({
     headers: {'API-KEY': '5492f4f3-88d9-4f6c-acc2-35f0df8246c6'}
 })
 
+
+
 export const getUsersAPI = (currentPage, pageSize) => {
     return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(repsonse => {
         return repsonse.data
@@ -49,4 +51,13 @@ export const getStatusAPI = (userId) =>{
 
 export const updateStatusAPI = (status) =>{
     return instance.put(`profile/status`, {status: status})
+}
+
+export const setPhoto = (photoFile) => {
+    const formData = new FormData();
+    formData.append("image", photoFile);
+
+    return instance.put(`profile/photo`, formData,
+        {headers: {
+                'Content-Type': 'multipart/form-data'}})
 }
