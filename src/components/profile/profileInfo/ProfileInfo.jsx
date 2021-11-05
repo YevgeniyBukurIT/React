@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import s from './ProfileInfo.module.css'
 import Preloader from '../../common/Preloader/Preloader'
-import ProfileStatusHook from './ProfileStatusHook'
 import user from './../../../assets/images/user.jpg'
+import ProfileData from './ProfileData'
+import ProfileDataForm from './ProfileDataForm'
 
 const ProfileInfo = (props) => {
     let [editMode, setEditMode] = useState(false)
@@ -17,6 +18,10 @@ const ProfileInfo = (props) => {
         }
     }
 
+    const onSubmit = (formData) =>{
+        props.saveProfile(formData)
+    }
+
 
     return (
         <div>
@@ -28,10 +33,13 @@ const ProfileInfo = (props) => {
                     </div>
                     <div>
                         {editMode
-                            ? <ProfileDataForm profile={props.profile}/>
+                            ? <ProfileDataForm profile={props.profile} onSubmit={onSubmit}/>
                             : <ProfileData profile={props.profile}
                                            isOwner={props.isOwner}
-                                           goToEditMode={() => (setEditMode(true))}/>}
+                                           goToEditMode={() => (setEditMode(true))}
+                                           updateStatus={props.updateStatus}
+                                           status={props.status}/>
+                        }
                     </div>
 
                 </div>
@@ -40,38 +48,6 @@ const ProfileInfo = (props) => {
     )
 }
 
-export const ProfileDataForm = (props) => {
-    return <div>Form</div>
-}
 
-export const ProfileData = (props) => {
-    return <div>
-        {props.isOwner && <div>
-            <button onClick={props.goToEditMode}>Edit</button>
-        </div>}
-        <div>
-            <b>Name:</b>: {props.profile.fullName}
-        </div>
-        <div>
-            <b>Id:</b> {props.profile.userId}
-        </div>
-        <div>
-            <b>Status:</b> <ProfileStatusHook status={props.status} updateStatus={props.updateStatus}/>
-        </div>
-        {props.profile.lookingForAJob &&
-        <div>
-            <b>My skills</b> {props.profile.lookingForAJobDescription}
-        </div>}
-        <div>
-            <b>Contacts</b>: {Object.keys(props.profile.contacts).map(key => {
-            return <Contact contactTitle={key} contactValue={props.profile.contacts[key]}/>
-        })}
-        </div>
-    </div>
-}
-
-const Contact = ({contactTitle, contactValue}) => {
-    return <div className={s.contacts}>{contactTitle}: {contactValue}</div>
-}
 
 export default ProfileInfo

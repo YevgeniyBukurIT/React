@@ -1,4 +1,4 @@
-import { getProfileAPI, getStatusAPI, setPhoto, updateStatusAPI } from '../api/api'
+import { getProfileAPI, getStatusAPI, saveProfileAPI, setPhoto, setPhotoAPI, updateStatusAPI } from '../api/api'
 
 
 const ADD_POST = 'ADD_POST'
@@ -82,10 +82,18 @@ export const updateStatus = (status) => async (dispatch) => {
 }
 
 export const savePhoto = (file) => async (dispatch) => {
-    let response = await setPhoto(file)
+    let response = await setPhotoAPI(file)
 
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos))
+    }
+}
+
+export const saveProfile = (profile) => async (dispatch) => {
+    let response = await saveProfileAPI(profile)
+
+    if (response.data.resultCode === 0) {
+
     }
 }
 
