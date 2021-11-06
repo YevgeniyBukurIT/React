@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import s from './ProfileInfo.module.css'
 import Preloader from '../../common/Preloader/Preloader'
 import user from './../../../assets/images/user.jpg'
-import ProfileData from './ProfileData'
 import ProfileDataForm from './ProfileDataForm'
+import ProfileData from './ProfileData'
 
 const ProfileInfo = (props) => {
     let [editMode, setEditMode] = useState(false)

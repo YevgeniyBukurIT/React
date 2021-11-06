@@ -57,7 +57,7 @@ export let addPostActionCreator = (newPostText) => ({type: ADD_POST, newPostText
 export let setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export let setStatus = (status) => ({type: SET_USERS_STATUS, status})
 export let deletePost = (postId) => ({type: DELETE_POST, postId})
-export let savePhotoSuccess = (photos) =>({type: SAVE_PHOTO, photos})
+export let savePhotoSuccess = (photos) => ({type: SAVE_PHOTO, photos})
 
 //Thunks
 export const getProfile = (userId) => async (dispatch) => {
@@ -75,10 +75,14 @@ export const getStatus = (userId) => async (dispatch) => {
 }
 
 export const updateStatus = (status) => async (dispatch) => {
-    let response = await updateStatusAPI(status)
+    try {
+        let response = await updateStatusAPI(status)
 
-    if (response.data.resultCode === 0) {
-        dispatch(setStatus(status))
+        if (response.data.resultCode === 0) {
+            dispatch(setStatus(status))
+        }
+    } catch (error) {
+        debugger
     }
 }
 
@@ -96,9 +100,8 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
 
     if (response.data.resultCode === 0) {
         dispatch(getProfile(userId))
-    }
-    else {
-        dispatch(stopSubmit('edit-profile', {_error: response.data.messages[0] }))
+    } else {
+        dispatch(stopSubmit('edit-profile', {_error: response.data.messages[0]}))
         return Promise.reject(response.data.messages[0])
     }
 }
