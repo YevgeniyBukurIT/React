@@ -22,7 +22,7 @@ const ProfileData = (props) => {
         </div>
         <div>
             <b>Contacts:</b> {Object.keys(props.profile.contacts).map(key => {
-            return <Contact contactTitle={key} contactValue={props.profile.contacts[key]}/>
+            return <Contact key={key} contactTitle={key} contactValue={props.profile.contacts[key]}/>
         })}
             <div>
                 <b>Status:</b> <ProfileStatusHook status={props.status} updateStatus={props.updateStatus}/>

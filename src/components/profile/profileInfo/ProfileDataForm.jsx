@@ -1,11 +1,15 @@
 import React from 'react'
 import ProfileStatusHook from './ProfileStatusHook'
-import { Contact } from './ProfileData'
 import { createField, Input, Textarea } from '../../common/FormsControls/FromsControls'
 import { reduxForm } from 'redux-form'
+import s from './ProfileInfo.module.css'
+import style from './../../common/FormsControls/FormsControls.module.css'
+
+
 
 const ProfileDataForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
+        {props.error && <div className={style.formError}> {props.error} </div>}
         <div>
             <button >Save</button>
         </div>
@@ -13,7 +17,7 @@ const ProfileDataForm = (props) => {
             <b>Full name:</b> {createField('Full name', "fullName", [], Input)}
         </div>
         <div>
-            <b>About me:</b> {props.profile.aboutMe}
+            <b>About me:</b>
             {createField('About me', 'aboutMe', [], Textarea)}
         </div>
         <div>
@@ -22,14 +26,14 @@ const ProfileDataForm = (props) => {
         </div>
 
         <div>
-            <b>My skills: </b> {props.profile.lookingForAJobDescription}
+            <b>My skills: </b>
             {createField('My skills', 'lookingForAJobDescription', [], Textarea)}
         </div>
-        {/*<div>*/}
-        {/*    <b>Contacts</b>: {Object.keys(props.profile.contacts).map(key => {*/}
-        {/*    return <Contact contactTitle={key} contactValue={props.profile.contacts[key]}/>*/}
-        {/*})}*/}
-        {/*</div>*/}
+        <div>
+            <b>Contacts</b>: {Object.keys(props.profile.contacts).map(key => {
+            return <div key={key} className={s.contacts}>{key}: {createField(key, `contacts.${key}`, [], Input)}</div>
+        })}
+        </div>
         <div>
             <b>Status:</b> <ProfileStatusHook status={props.status} updateStatus={props.updateStatus}/>
         </div>
