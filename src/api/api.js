@@ -32,8 +32,8 @@ export const getHeaderAPI = () => {
 }
 
 export const authAPI = {
-    login(email, password, rememberMe = false) {
-        return instance.post(`/auth/login`, {email, password, rememberMe})
+    login(email, password, rememberMe = false, captcha = null) {
+        return instance.post(`/auth/login`, {email, password, rememberMe, captcha})
     },
     logout() {
         return instance.delete(`/auth/login`)
@@ -64,4 +64,8 @@ export const setPhotoAPI = (photoFile) => {
 
 export const saveProfileAPI = (profile) => {
     return instance.put(`profile`, profile)
+}
+
+export const getCaptchaAPI = () => {
+    return instance.get(`security/get-captcha-url`)
 }
